@@ -50,6 +50,11 @@ body {
   }
 }
 
+.panel{
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart {
   &__top {
     display: flex;

@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Categories from "./components/Categories";
 import PizzaBlock from "./components/PizzaBlock";
+import Sort from "./components/Sort";
+
 
 
 function App() {
@@ -11,7 +13,12 @@ function App() {
       <Header />
       <div className="content">
         <div className="container">
-          <Categories />
+          <div className="panel">
+          <Categories /> 
+          <Sort />
+          </div>
+          
+          
           <PizzaBlock   />
         </div>
       </div>

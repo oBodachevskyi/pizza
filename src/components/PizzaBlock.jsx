@@ -6,8 +6,8 @@ const PizzaBlock = (props) => {
 
   return (
     <div className="pizza-block">
-      {arrayOfPizzaz.map((pizza) => (
-        <PizzaItem item={pizza} />
+      {arrayOfPizzaz.map((pizza, index) => (
+        <PizzaItem item={pizza} key={index } />
       ))}
     </div>
   );
