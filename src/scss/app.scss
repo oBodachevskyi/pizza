@@ -315,3 +315,13 @@ body {
     }
   }
 }
+
+.desc {
+  transform: rotate(180deg);
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.asc {
+  cursor: pointer;
+}

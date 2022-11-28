@@ -1,11 +1,7 @@
 import "./scss/app.scss";
 import "./App.css";
 import Header from "./components/Header";
-import Categories from "./components/Categories";
-import PizzaBlock from "./components/PizzaBlock";
-import Sort from "./components/Sort";
-
-
+import { Home } from "./pages/Home";
 
 function App() {
   return (
@@ -13,14 +9,9 @@ function App() {
       <Header />
       <div className="content">
         <div className="container">
-          <div className="panel">
-          <Categories /> 
-          <Sort />
+
+          <Home />
           </div>
-          
-          
-          <PizzaBlock   />
-        </div>
       </div>
     </div>
   );

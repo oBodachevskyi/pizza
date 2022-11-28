@@ -1,20 +1,32 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setSortParam } from "../redux/slises/filterSlice";
 
-const Sort = () => {
+export const Sort = () => {
   const sortMenu = ["популярности", "цене", "алфавиту"];
+  const sortProp = ["rating", "price", "title"];
 
   const [open, setOpen] = useState(false);
-  const [menuItem, setMenuItem] = useState(0);
+  const [sortType, setSortType] = useState(true);
+  const menuItem = useSelector((state) => state.filter.sort.name);
+  const dispatch = useDispatch();
 
   const handleChangeMenuItem = (i) => {
-    setMenuItem(i);
+    dispatch(setSortParam({ name: sortMenu[i], sortPropperty: sortProp[i] }));
     setOpen(!open);
+  };
+
+  const handleChangeSortType = () => {
+    setSortType(!sortType);
+    dispatch(setSortParam({ sortType: !sortType ? "asc" : "desc" }));
   };
 
   return (
     <div className="sort">
       <div className="sort__label">
         <svg
+          className={sortType ? "asc" : "desc"}
+          onClick={handleChangeSortType}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -27,7 +39,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-              <span onClick={() => setOpen(!open)}>{ sortMenu[menuItem]}</span>
+        <span onClick={() => setOpen(!open)}>{menuItem}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -35,7 +47,7 @@ const Sort = () => {
             {sortMenu.map((item, index) => (
               <li
                 key={item}
-                className={menuItem === index ? "active" : ""}
+                className={menuItem === sortMenu[index] ? "active" : ""}
                 onClick={() => handleChangeMenuItem(index)}
               >
                 {sortMenu[index]}
@@ -48,4 +60,4 @@ const Sort = () => {
   );
 };
 
-export default Sort;
+
