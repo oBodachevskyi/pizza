@@ -7,7 +7,7 @@ export const Sort = () => {
   const sortProp = ["rating", "price", "title"];
 
   const [open, setOpen] = useState(false);
-  const [sortType, setSortType] = useState(true);
+  const [sortType, setSortType] = useState(false);
   const menuItem = useSelector((state) => state.filter.sort.name);
   const dispatch = useDispatch();
 

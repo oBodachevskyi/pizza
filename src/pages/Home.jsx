@@ -4,12 +4,14 @@ import { Sort } from "../components/Sort";
 
 export const Home = () => {
   return (
-    <>
-      <div className="panel">
-        <Categories />
-        <Sort />
+    <div className="content">
+      <div className="container">
+        <div className="panel">
+          <Categories />
+          <Sort />
+        </div>
+        <PizzaBlock />
       </div>
-      <PizzaBlock />
-    </>
+    </div>
   );
 };
