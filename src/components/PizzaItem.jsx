@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addPizzaToCart } from "../redux/slises/cartSlice"
 
 const PizzaItem = ({ item }) => {
   const typesArray = ["тонкое", "традиционное"];
 
+
   const [pizzaCount, setPizzaCount] = useState(0);
   const [sizeValue, setSizeValue] = useState(0);
   const [typeValue, setTypeValue] = useState(0);
+  const dispatch = useDispatch()
+
+  const handleAddPizzaToCart = () => {
+    setPizzaCount(pizzaCount + 1)
+    dispatch(addPizzaToCart({
+      ...item,
+      sizes: sizeValue,
+      types: sizeValue,
+       key: String(item.id) + item.title + String(sizeValue) + String(sizeValue)
+    }))
+  }
 
   return (
       <>
@@ -45,9 +59,7 @@ const PizzaItem = ({ item }) => {
           <div className="pizza-item__price">{item.price} ₽</div>
           <button
             className="button button--outline button--add"
-            onClick={() => {
-              setPizzaCount(pizzaCount + 1);
-            }}
+            onClick={handleAddPizzaToCart}
           >
             <svg
               width="12"
